@@ -1,0 +1,30 @@
+version: '3'
+services:
+  database:
+    image: postgres:12.1
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: ilovemom
+
+  backend:
+    build:
+      context: ./books-backend
+      dockerfile: Dockerfile  
+    volumes:
+      - /app/node_modules
+      - ./service/config:/app/config
+      - ./service/src:/app/src
+      - ./service/test:/app/test
+    ports:
+      - "3000:3000"
+
+  frontend:
+    build:
+      context: ./books-frontend
+      dockerfile: Dockerfile
+    volumes:
+      - /app/node_modules
+      - ./ui:/app
+    ports:
+      - "8080:8080"
