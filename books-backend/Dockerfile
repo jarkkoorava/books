@@ -1,12 +1,13 @@
-FROM node:10.16.0-alpine
+FROM node:16
 
-RUN mkdir -p /app/config /app/src
+WORKDIR /usr/src/app
 
-WORKDIR /app
 
-COPY package.json /app/package.json
-COPY package-lock.json /app/package-lock.json
+COPY package*.json ./
 
 RUN npm install
 
-CMD ["npm", "start"]
+COPY . .
+
+EXPOSE 3001
+CMD [ "npm", "start" ]

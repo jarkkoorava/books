@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Nav, Navbar, Col, Row } from 'react-bootstrap';
+import { Container, Navbar, Col, Row } from 'react-bootstrap';
 import Booklist from './Booklist';
 import Bookdetails from './Bookdetails';
 
@@ -31,6 +31,7 @@ const books = [
 ];
 
 export default function BooksApp() {
+  // const [books, setBooks] = useState([]);
   const [currentBookId, setCurrentBookId] = useState(0);
 
   const changeCurrentBook = (id: number) => {
@@ -39,8 +40,9 @@ export default function BooksApp() {
   };
 
   const getCurrentBook = () => {
-    console.log(currentBookId);
-    return books.filter((book) => book.id === currentBookId)[0];
+    const filteredBook = books.filter((book) => book.id === currentBookId)[0];
+    console.log(filteredBook);
+    return filteredBook;
   };
 
   return (
@@ -57,7 +59,7 @@ export default function BooksApp() {
             <Booklist books={books} changeCurrentBook={changeCurrentBook} />
           </Col>
           <Col>
-            <Bookdetails book={getCurrentBook()} />
+            {currentBookId !== 0 && <Bookdetails book={getCurrentBook()} />}
           </Col>
         </Row>
       </Container>

@@ -10,6 +10,16 @@ var booksRouter = require('./routes/books');
 
 var app = express();
 
+// Database Connection
+const db = require('./config/database');
+db.authenticate()
+  .then(() => {
+    console.log('Database connected...');
+  })
+  .catch((err) => {
+    console.log('Error: ' + err);
+  });
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

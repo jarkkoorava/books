@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 
 interface Book {
@@ -13,10 +13,10 @@ interface Props {
 }
 
 export default function Bookdetails(props: Props) {
+  console.log(JSON.stringify(props.book, null, 4));
   return (
     <>
       <h3> Book details</h3>
-      {console.log(`In bookdetails: ${JSON.stringify(props.book, null, 4)}`)}
       <Form>
         <Form.Group className="mb-3" controlId="formAuthor">
           <Form.Label>Author</Form.Label>

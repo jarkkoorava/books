@@ -1,16 +1,17 @@
-FROM node:10.16.0-alpine
+FROM node:alpine
 
-EXPOSE 8080
-
-RUN mkdir -p /app/public /app/src
+EXPOSE 3000
 
 WORKDIR /app
 
-COPY tsconfig.json /app/tsconfig.json 
+ENV PATH /app/node_modules/.bin:$PATH
 
-COPY package.json /app/package.json
-COPY package-lock.json /app/package-lock.json
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm i
 
-RUN npm install
+RUN mkdir -p node_modules/.cache && chmod -R 777 node_modules/.cache
+
+COPY . ./
 
 CMD ["npm", "start"]
