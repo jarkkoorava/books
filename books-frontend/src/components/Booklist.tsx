@@ -11,6 +11,7 @@ interface Book {
 interface Props {
   books: Array<Book>;
   changeCurrentBook(id: number): void;
+  currentBookId: number;
 }
 
 export default function Bookdetails(props: Props) {
@@ -21,6 +22,7 @@ export default function Bookdetails(props: Props) {
       title={book.title}
       description={book.description}
       changeCurrentBook={props.changeCurrentBook}
+      currentBookId={props.currentBookId}
     />
   ));
 

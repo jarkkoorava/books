@@ -1,48 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Navbar, Col, Row } from 'react-bootstrap';
 import Booklist from './Booklist';
 import Bookdetails from './Bookdetails';
 
-const books = [
-  {
-    id: 1,
-    title: '48 Laws Of Power',
-    author: 'Robert Greene',
-    description: 'Manipulate everyone to get influence',
-  },
-  {
-    id: 2,
-    title: 'How To Win Friends And Gain Influence',
-    author: 'Dale Carnegie',
-    description: 'Be a nice person to get influence',
-  },
-  {
-    id: 3,
-    title: 'Emotional Intelligence',
-    author: 'Daniel Goleman ',
-    description: 'Know how people think to get influence',
-  },
-  {
-    id: 4,
-    title: 'What Every Body Is Saying',
-    author: 'Joe Navarro',
-    description: 'Use body language to get influence',
-  },
-];
-
 export default function BooksApp() {
-  // const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState(null);
   const [currentBookId, setCurrentBookId] = useState(0);
+  const [updateBookList, setUpdateBookList] = useState(false);
+
+  useEffect(() => {
+    fetch(`http://localhost:3001/books`)
+      .then((response) => response.json())
+      .then((data) => setBooks(data))
+      .catch((err) => {
+        console.log(err.message);
+      });
+    setUpdateBookList(false);
+  }, [updateBookList]);
 
   const changeCurrentBook = (id: number) => {
     setCurrentBookId(id);
     console.log(`Current book: ${currentBookId}`);
   };
 
-  const getCurrentBook = () => {
-    const filteredBook = books.filter((book) => book.id === currentBookId)[0];
-    console.log(filteredBook);
-    return filteredBook;
+  const updateList = () => {
+    setUpdateBookList(true);
   };
 
   return (
@@ -56,10 +38,16 @@ export default function BooksApp() {
       <Container>
         <Row>
           <Col>
-            <Booklist books={books} changeCurrentBook={changeCurrentBook} />
+            {books && (
+              <Booklist
+                books={books}
+                changeCurrentBook={changeCurrentBook}
+                currentBookId={currentBookId && currentBookId}
+              />
+            )}
           </Col>
           <Col>
-            {currentBookId !== 0 && <Bookdetails book={getCurrentBook()} />}
+            <Bookdetails bookId={currentBookId} updateList={updateList} />
           </Col>
         </Row>
       </Container>
