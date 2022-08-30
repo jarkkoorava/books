@@ -89,7 +89,11 @@ export default function Bookdetails(props: Props) {
     props.updateList();
   };
 
-  const schema = yup.object({});
+  const schema = yup.object({
+    author: yup.string().required(),
+    title: yup.string().required(),
+    description: yup.string().required(),
+  });
 
   return (
     <>
