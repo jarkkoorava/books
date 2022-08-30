@@ -1,6 +1,7 @@
 const { signedCookie } = require('cookie-parser');
 var express = require('express');
 var router = express.Router();
+const { Book } = require('../models');
 
 const books = [
   {
@@ -29,8 +30,9 @@ const books = [
   },
 ];
 
-router.get('/', function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
+router.get('/', async function (req, res, next) {
+  const books = await Book.findAll({ raw: false });
+  parsedBooks = res.header('Access-Control-Allow-Origin', '*');
   res.json(books);
 });
 
