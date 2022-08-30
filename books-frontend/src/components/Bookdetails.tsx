@@ -4,13 +4,6 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import BookDetailsForm from './BookDetailsForm';
 
-interface Book {
-  id: number;
-  title: string;
-  author: string;
-  description: string;
-}
-
 interface Props {
   bookId: number;
   updateList: () => void;

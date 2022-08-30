@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Navbar, Col, Row } from 'react-bootstrap';
 import Booklist from './Booklist';
-import Bookdetails from './Bookdetails';
+import BookDetails from './BookDetails';
 
 export default function BooksApp() {
   const [books, setBooks] = useState(null);
@@ -47,7 +47,7 @@ export default function BooksApp() {
             )}
           </Col>
           <Col>
-            <Bookdetails bookId={currentBookId} updateList={updateList} />
+            <BookDetails bookId={currentBookId} updateList={updateList} />
           </Col>
         </Row>
       </Container>
