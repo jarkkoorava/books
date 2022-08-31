@@ -58,7 +58,9 @@ These are some next steps I would take if this was an actual production applicat
 
 - Add some unit tests
 - Improve usability of the frontend, perhaps a separate component for adding a new book and editing an existing one
+- Add more validation to the form in the frontend
 - Use TypeScript in backend too
+- Refactor backend to use separate controllers
 - Get rid of all warings and error messages
 - Fix the database initialization issues
 - Use docker volume to preserve database even when containers are brought down
