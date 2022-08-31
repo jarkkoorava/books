@@ -40,7 +40,7 @@ You only need docker and docker-compose to run this locally.
 
 `No issues found.`
 
-4. then stop the containers with **CTRL+C**. Currently the database does not initiate correctly on the first run. This most likely happens because the backend initiates itself faster than the database. The dadatabase will initiate on the second go.
+4. Then stop the containers with **CTRL+C**. Currently the database does not initiate correctly on the first run. This most likely happens because the backend initiates itself faster than the database. The dadatabase will initiate on the second go.
 5. Run the following command to start the containers again
 
 `docker-compose up`
