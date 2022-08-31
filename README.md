@@ -36,13 +36,17 @@ You only need docker and docker-compose to run this locally.
 
 `docker-compose -up --build`
 
-3. Stop the containers with **CTRL+C**. Currently the database does not initiate correctly on the first run. This most likely happens because the backend initiates itself faster than the database. The dadatabase will initiate on the second go.
-4. Run the following command to bring the containers up again
+3. Wait for the frontend to build, the build is done when the following message is displayed
+
+`No issues found.`
+
+4. then stop the containers with **CTRL+C**. Currently the database does not initiate correctly on the first run. This most likely happens because the backend initiates itself faster than the database. The dadatabase will initiate on the second go.
+5. Run the following command to start the containers again
 
 `docker-compose up`
 
-5. You can access the frontend at [localhost:8080](http://localhost:8080)
-6. In case you need to build the containers again, bring the containers down first
+6. You can access the frontend at [localhost:8080](http://localhost:8080)
+7. In case you need to build the containers again, bring the containers down first
 
 `docker-compose down`
 
