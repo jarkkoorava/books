@@ -20,7 +20,6 @@ export default function BooksApp() {
 
   const changeCurrentBook = (id: number) => {
     setCurrentBookId(id);
-    console.log(`Current book: ${currentBookId}`);
   };
 
   const updateList = () => {
