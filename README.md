@@ -17,6 +17,8 @@ This is a simple API for reading and writing book data into a database.
 
 This project runs completely in docker. There are three containers, one for the frontend, one for the backend and one for the database.
 
+![Diagram](diagram.png)
+
 The frontend is a simple React app made with Create React App. It is wrtitten in TypeScript and uses Formik to handle forms.
 
 The backend is a Node app that uses Express to handle requests. Sequelize ORM is used for database queries. The backend is written in JS.
